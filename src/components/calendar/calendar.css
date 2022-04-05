@@ -1,32 +1,92 @@
-table {
-  padding: 0.5vw;
+/* Calendar Container */
+.calendar-container {
+  width: 350px;
 }
 
-th {
-  width: 30px;
-  height: 30px;
-  padding: 0.2vw;
-  background-color: rgb(177, 219, 255);
+/* Calendar background */
+.calendar-background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+  background-color: var(--secondary-bg-dark);
+  border-radius: var(--size-2);
+  width: 100%;
 }
 
-thead {
-  border-collapse: collapse;
+/* Caption (Month / Year information) */
+.caption {
+  display: flex;
+  justify-content: center;
+  font-size: var(--size-5);
+  font-weight: bold;
+  margin: var(--size-3) 0;
 }
 
-td {
-  border: 2px aliceblue solid;
-  background-color: aliceblue;
+/* Select Month */
+.months-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 95%;
   text-align: center;
-  height: 30px;
+  margin-bottom: var(--size-5);
+}
+
+/* Calendar table */
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 340px;
+  height: 200px;
+  color: var(--text-color-dark);
+  background-color: var(--hover-color);
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+  border-radius: var(--size-2);
+}
+
+table .day-name-row th:first-child {
+  border-radius: var(--size-2) 0 0 0;
+}
+
+table .day-name-row th:last-child {
+  border-radius: 0 var(--size-2) 0 0;
+}
+
+table .week-row:last-child td:first-child {
+  border-radius: 0 0 0 var(--size-2);
+}
+
+table .week-row:last-child td:last-child {
+  border-radius: 0 0 var(--size-2) 0;
+}
+
+.week-day-name {
+  padding: 0.25vw;
+  border-bottom: var(--size-0) var(--text-color-medium) solid;
+}
+
+.day {
+  text-align: center;
   cursor: pointer;
 }
 
 th:hover,
 td:hover {
-  background-color:rgb(205, 233, 255);
-  border: 2px rgba(0, 0, 0, 0);
+  background-color: var(--secondary-bg-dark);
 }
 
 .different-month {
-  color: lightblue;
+  color: var(--primary-bg-light);
+}
+
+.selected-day {
+  background-color: var(--secondary-bg-dark);
+}
+
+.current-day {
+  background-color: var(--secondary-bg-dark);
+  border-radius: 50%;
 }

@@ -1,16 +1,18 @@
 import {
-  startOfWeek,
+  startOfYear,
   startOfMonth,
-  endOfWeek,
   endOfMonth,
+  startOfWeek,
+  endOfWeek,
   startOfDay,
-  addDays
+  addDays,
+  addMonths
 } from 'date-fns';
 
 /* A function that returns a week */
 
 export const newWeek = (start = new Date()) => {
-  let date = startOfWeek(startOfDay(start));
+  let date = startOfWeek(startOfDay(start), { weekStartsOn: 1 });
 
   return function () {
     const week = [...Array(7)].map((_, i) => addDays(date, i));
@@ -48,4 +50,16 @@ export const newMonth = (start = new Date()) => {
   }
 }
 
+/* A function that returns another function that returns a year */
 
+export const newYear = (start = new Date()) => {
+  let monthsOfYear = [];
+  let date = startOfYear(startOfMonth(start));
+
+  return function () {
+    const month = [...Array(12)].map((_, i) => addMonths(date, i));
+    date = addMonths(month[11], 1)
+
+    return month;
+  }
+} 

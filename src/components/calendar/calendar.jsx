@@ -1,67 +1,53 @@
-import React from "react";
-import './calendar.css'
-import { newWeek, newMonth } from '../../utils/util_calendar.js';
-import { format, isSameMonth } from 'date-fns';
+import { React, useState, useEffect } from "react";
+import './calendar.css';
+import { TableHead } from "./tableHead";
+import { TableBody } from "./tableBody";
+import { SelectMonth } from "./selectMonth";
+import { TiArrowSortedDown } from 'react-icons/ti'
+import { format } from 'date-fns';
 
 export const Calendar = () => {
-  const data = newMonth(new Date())();
-  const week = newWeek(new Date())();
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [showMonths, setShowMonths] = useState(false);
+  const currentDay = new Date();
 
-  console.log()
-  function MonthlyTableHead() {
-    const weekDays = week.map(day => format(day, 'EEE'))
-    return (
-      <thead>
-        <tr className='table-head-row'>
-          {
-            weekDays.map(dayName =>
-              <th className="week-day" key={dayName}>
-                {dayName}
-              </th>
-            )
-          }
-        </tr>
-      </thead>
-    )
-  }
-
-  function MonthlyTableBody() {
-
-    const dayColor = (day) => {
-      if (!isSameMonth(day, new Date())) {
-        return 'different-month'
-      } else {
-        return 'current-month';
-      }
-    }
-
-    return (
-      <tbody>
-        {data.map(week =>
-          <tr className="week-row" key={week}>
-            {
-              week.map(day =>
-                <td className={`day ${dayColor(day)}`} key={day}>
-                  {format(day, "dd")}
-                </td>
-              )
-            }
-          </tr>
-        )}
-      </tbody>
-    )
+  function handleToggle() {
+    setShowMonths(!showMonths);
   }
 
   return (
-    <>
-      <div>
-        Calendar
+    <div className="calendar-container">
+      <h1>
+        Sooper
+      </h1>
+      <div className="calendar-background">
+
+        <div className="caption">
+          {format(selectedDate, 'MMMM')} {format(selectedDate, 'Y')}
+          <button
+            type="button"
+            onClick={handleToggle}
+          >
+            <TiArrowSortedDown />
+          </button>
+        </div>
+        <SelectMonth
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          showMonths={showMonths}
+        />
+
+        <table>
+          <TableHead selectedDate={selectedDate} />
+          <TableBody
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            currentDay={currentDay}
+          />
+        </table>
+
       </div>
-      <table className="week-days">
-        <MonthlyTableHead />
-        <MonthlyTableBody />
-      </table>
-    </>
+    </div>
   )
 
 }

@@ -1,0 +1,49 @@
+:root {
+  --primary-bg-dark: #737B56;
+  --primary-bg-medium: #737b56b7;
+  --primary-bg-light: #a5ad85;
+  --secondary-bg-dark: #F7DCB5;
+  --secondary-bg-medium: #fff2e0;
+  --secondary-bg-light: #fcebd5;
+  --text-color-dark: #462f22;
+  --text-color-medium: #462f2236;
+  --text-color-light: #f0f0ec;
+  --hover-color: #fff7ec;
+  --border-color: #D2B08F;
+  --alert: #ff0000;
+  --check: #12c47f;
+  --white: #fff;
+  --black: #000;
+
+  --size-0: 1px;
+  --size-1: 4px;
+  --size-2: 8px;
+  --size-3: 12px;
+  --size-4: 16px;
+  --size-5: 24px;
+  --size-6: 32px;
+}
+
+html,
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+}
