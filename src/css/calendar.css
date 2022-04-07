@@ -15,12 +15,23 @@
 }
 
 /* Caption (Month / Year information) */
-.caption {
+.caption-container {
   display: flex;
+  width: 100%;
   justify-content: center;
+}
+
+.caption {
   font-size: var(--size-5);
   font-weight: bold;
   margin: var(--size-3) 0;
+  text-align: center;
+  width: 80%;
+}
+
+.caption-container button svg {
+  height: 1.5em;
+  width: 1.5em;
 }
 
 /* Select Month */

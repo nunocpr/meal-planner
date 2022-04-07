@@ -1,3 +1,7 @@
+/* importing other css files into main css */
+@import './animation.css';
+@import './calendar.css';
+
 :root {
   --primary-bg-dark: #737B56;
   --primary-bg-medium: #737b56b7;

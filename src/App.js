@@ -1,15 +1,11 @@
 import React from 'react';
 import { Calendar } from './components/calendar/calendar';
-import './App.css';
+import './css/app.css';
 
 
-function App() {
-
-  return (
-    <div className="App">
-      <Calendar />
-    </div>
-  );
-}
+const App = () =>
+  <div className="App">
+    <Calendar />
+  </div>
 
 export default App;

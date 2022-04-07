@@ -53,7 +53,6 @@ export const newMonth = (start = new Date()) => {
 /* A function that returns another function that returns a year */
 
 export const newYear = (start = new Date()) => {
-  let monthsOfYear = [];
   let date = startOfYear(startOfMonth(start));
 
   return function () {
