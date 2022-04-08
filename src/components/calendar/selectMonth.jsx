@@ -7,10 +7,14 @@ export function SelectMonth(props) {
 
   return (
     <div className={`months-container ${props.showMonths ? '' : 'hidden'}`}>
-      {year.map(month =>
-        <div className='month'>
+      {year.map((month, i) =>
+        <button
+          className='month'
+          onClick={() => props.setSelectedDate(month)}
+          key={i}
+        >
           {format(month, 'MMMM')}
-        </div>
+        </button>
       )}
     </div>
   )

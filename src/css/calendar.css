@@ -12,6 +12,7 @@
   background-color: var(--secondary-bg-dark);
   border-radius: var(--size-2);
   width: 100%;
+  padding: 1.5rem;
 }
 
 /* Caption (Month / Year information) */
@@ -26,6 +27,7 @@
   font-weight: bold;
   margin: var(--size-3) 0;
   text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   width: 80%;
 }
 
