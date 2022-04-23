@@ -1,0 +1,28 @@
+/* Small Sized screens (until 450px) */
+
+.random-recipe-container {
+  display: flex;
+  justify-content: center;
+}
+
+.random-recipe {
+  border: 1px solid black;
+  padding: 4px;
+}
+
+.recipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipe .title {
+  text-align: center;
+}
+
+/* Medium Sized screens (from 450px to 900px) */
+@media only screen and (min-width: 450px) {}
+
+
+/* Large Sized screens (from 450px to 900px) */
+@media only screen and (min-width: 900px) {}

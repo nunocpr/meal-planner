@@ -1,6 +1,19 @@
-/* importing other css files into main css */
+/* 
+
+Here you can find commonly applied styles to all pages,
+including:
+
+- color and size templates,
+- common elements (button, span),
+- common classes (.hidden)
+
+*/
+
+/* importing other css files into the main css */
+@import './normalize.css';
 @import './animation.css';
 @import './calendar.css';
+@import './meal-planner.css';
 
 :root {
   --primary-bg-dark: #737B56;
@@ -26,12 +39,15 @@
   --size-4: 16px;
   --size-5: 24px;
   --size-6: 32px;
+
 }
 
 html,
 body {
   font-family: 'Poppins', sans-serif;
 }
+
+/* Common Elements and Classes */
 
 .hidden {
   display: none;

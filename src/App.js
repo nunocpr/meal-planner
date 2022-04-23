@@ -1,11 +1,24 @@
 import React from 'react';
-import { Calendar } from './components/calendar/calendar';
+import MealPlanner from './components/mealPlanner/MealPlanner';
+import Header from './components/header/Header';
 import './css/app.css';
 
 
 const App = () =>
   <div className="App">
-    <Calendar />
+
+    <Header />
+
+    <MealPlanner />
+
+    <div>
+      Add a recipe
+    </div>
+
+    <div>
+      Check your recipes
+    </div>
+
   </div>
 
 export default App;

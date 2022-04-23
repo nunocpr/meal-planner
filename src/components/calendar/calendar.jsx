@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Caption } from './caption';
-import { TableHead } from "./tableHead";
-import { TableBody } from "./tableBody";
-import { SelectMonth } from "./selectMonth";
+import { Caption } from './Caption';
+import { TableHead } from "./TableHead";
+import { TableBody } from "./TableBody";
+import { SelectMonth } from "./SelectMonth";
 
 export const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date()),
@@ -12,9 +12,6 @@ export const Calendar = () => {
 
   return (
     <div className="calendar-container">
-      <h1>
-        Sooper
-      </h1>
 
       <div className="calendar-background">
 
