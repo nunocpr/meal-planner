@@ -1,5 +1,4 @@
 /* Small Sized screens (until 450px) */
-
 .random-recipe-container {
   display: flex;
   justify-content: center;
@@ -19,6 +18,46 @@
 .recipe .title {
   text-align: center;
 }
+
+/* recipeInfo */
+.recipe-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.recipe-info-selectors {
+  background-color: var(--secondary-bg-dark);
+  display: flex;
+}
+
+.recipe-info-selectors button {
+  width: 100%;
+}
+
+.recipe-info-content {
+  width: 85vw;
+  align-self: center;
+}
+
+/* Recipe Instructions */
+
+.instructions-step {
+  margin-bottom: var(--size-2);
+}
+
+/* Recipe Ingredients */
+.ingredient-headings {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.ingredients-unit {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: var(--size-2);
+}
+
 
 /* Medium Sized screens (from 450px to 900px) */
 @media only screen and (min-width: 450px) {}

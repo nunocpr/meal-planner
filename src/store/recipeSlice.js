@@ -3,6 +3,7 @@ import { getRandomRecipe } from '../api/spoonacularAPI.js';
 
 const initialState = {
   recipe: [],
+  recipeInstructions: [],
   error: false,
   isLoading: false,
 };
@@ -11,43 +12,50 @@ const recipeSlice = createSlice({
   name: 'recipe',
   initialState,
   reducers: {
-    // Reducer template from reddit-client 
-    getRecipePending(state) {
+    // Reducers for Random Recipe
+    getRandomRecipePending(state) {
       state.isLoading = true;
       state.error = false;
     },
-    getRecipeSuccess(state, action) {
+    getRandomRecipeSuccess(state, action) {
       state.isLoading = false;
       state.recipe = action.payload;
     },
-    getRecipeFailed(state) {
+    getRandomRecipeFailed(state) {
       state.isLoading = false;
       state.error = true;
     },
+    getRandomRecipeInstructions(state, action) {
+      state.isLoading = false;
+      state.recipeInstructions = action.payload;
+    }
   },
 });
 
 export const {
-  getRecipePending,
-  getRecipeSuccess,
-  getRecipeFailed,
+  getRandomRecipePending,
+  getRandomRecipeSuccess,
+  getRandomRecipeFailed,
+  getRandomRecipeInstructions,
 } = recipeSlice.actions
 
 export default recipeSlice.reducer;
 
 /* Selectors */
 export const selectRecipe = (state) => state.recipe.recipe;
+export const selectRecipeInstructions = (state) => state.recipe.recipeInstructions;
 
 /* Async Thunks to fetch recipes */
 
 export const fetchRandomRecipe = () => async dispatch => {
   try {
-    dispatch(getRecipePending());
+    dispatch(getRandomRecipePending());
     const recipe = await getRandomRecipe();
 
-    dispatch(getRecipeSuccess(recipe));
+    dispatch(getRandomRecipeSuccess(recipe));
+    dispatch(getRandomRecipeInstructions(recipe.analyzedInstructions[0].steps));
   } catch (error) {
     console.log(error + ' This is an API error')
-    dispatch(getRecipeFailed());
+    dispatch(getRandomRecipeFailed());
   }
 }
