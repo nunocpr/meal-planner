@@ -1,18 +1,24 @@
 /* Small Sized screens (until 450px) */
-.random-recipe-container {
+.main-container {
   display: flex;
-  justify-content: center;
-}
-
-.random-recipe {
-  border: 1px solid black;
-  padding: 4px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .recipe {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.random-recipe-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.random-recipe-button {
+  border: 1px solid black;
+  padding: 4px;
 }
 
 .recipe .title {
@@ -36,14 +42,15 @@
 }
 
 .recipe-info-content {
-  width: 85vw;
   align-self: center;
+  padding: var(--size-3);
 }
 
 /* Recipe Instructions */
 
 .instructions-step {
-  margin-bottom: var(--size-2);
+  margin-bottom: var(--size-3);
+  padding: var(--size-2)
 }
 
 /* Recipe Ingredients */
@@ -58,10 +65,18 @@
   margin-bottom: var(--size-2);
 }
 
+.ingredients-unit>* {
+  padding: 5px;
+}
 
 /* Medium Sized screens (from 450px to 900px) */
 @media only screen and (min-width: 450px) {}
 
 
 /* Large Sized screens (from 450px to 900px) */
-@media only screen and (min-width: 900px) {}
+@media only screen and (min-width: 900px) {
+  .recipe {
+    width: 60vw;
+    align-self: center;
+  }
+}

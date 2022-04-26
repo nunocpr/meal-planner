@@ -2,8 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getRandomRecipe } from '../api/spoonacularAPI.js';
 
 const initialState = {
-  recipe: [],
+  currentRecipe: [],
   recipeInstructions: [],
+  recipeList: [],
   error: false,
   isLoading: false,
 };
@@ -19,7 +20,7 @@ const recipeSlice = createSlice({
     },
     getRandomRecipeSuccess(state, action) {
       state.isLoading = false;
-      state.recipe = action.payload;
+      state.currentRecipe = action.payload;
     },
     getRandomRecipeFailed(state) {
       state.isLoading = false;
@@ -42,7 +43,7 @@ export const {
 export default recipeSlice.reducer;
 
 /* Selectors */
-export const selectRecipe = (state) => state.recipe.recipe;
+export const selectRecipe = (state) => state.recipe.currentRecipe;
 export const selectRecipeInstructions = (state) => state.recipe.recipeInstructions;
 
 /* Async Thunks to fetch recipes */

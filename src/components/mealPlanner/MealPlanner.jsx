@@ -10,8 +10,6 @@ const MealPlanner = () => {
   const ingredients = recipe.extendedIngredients;
   const [content, setContent] = useState('instructions');
   console.log(recipe)
-  console.log(recipeInstructions)
-
 
   useEffect(() => {
     dispatch(fetchRandomRecipe())
@@ -54,7 +52,9 @@ const MealPlanner = () => {
         <div className={content}>
           {
             <ul className="ingredients-list">
-              <div className="ingredient-headings">
+              <div
+                className="ingredient-headings"
+              >
                 <h4 className="ingredient-name-heading">
                   Ingredients
                 </h4>
@@ -64,19 +64,17 @@ const MealPlanner = () => {
               </div>
 
               {ingredients.map(ingredient =>
-                <>
-                  <li
-                    className="ingredients-unit"
-                    key={ingredient.id}
-                  >
-                    <div className="ingredient-name">
-                      {ingredient.nameClean}
-                    </div>
-                    <div className="ingredient-amount">
-                      {ingredient.measures.metric.amount} {ingredient.measures.metric.unitShort}
-                    </div>
-                  </li>
-                </>
+                <li
+                  className="ingredients-unit"
+                  key={ingredient.id}
+                >
+                  <div className="ingredient-name">
+                    {ingredient.nameClean}
+                  </div>
+                  <div className="ingredient-amount">
+                    {ingredient.measures.metric.amount} {ingredient.measures.metric.unitShort}
+                  </div>
+                </li>
               )}
             </ul>
           }
@@ -88,9 +86,9 @@ const MealPlanner = () => {
   }
 
   return (
-    <div className="container">
-      <div className="random-recipe-container">
-        <button className="random-recipe" onClick={getRandomRecipeHandler}>
+    <div className="main-container">
+      <div className="random-recipe-button-container">
+        <button className="random-recipe-button" onClick={getRandomRecipeHandler}>
           Click me for a random Recipe
         </button>
       </div>
@@ -107,9 +105,17 @@ const MealPlanner = () => {
         >
         </img>
 
-        <p className="dishType">
-          {recipe.dishTypes}
-
+        <p className="recipe-time">
+          How much time: {recipe.readyInMinutes} minutes
+        </p>
+        <p className="recipe-servings">
+          Number of servings: {recipe.servings}
+        </p>
+        <p className="recipe-vegan">
+          Vegan: {recipe.vegan ? 'Yes' : 'No'}
+        </p>
+        <p className="recipe-vegetarian">
+          Vegetarian: {recipe.vegetarian ? 'Yes' : 'No'}
         </p>
 
         <div className="recipe-info">
