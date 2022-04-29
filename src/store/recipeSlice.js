@@ -29,7 +29,7 @@ const recipeSlice = createSlice({
     getRandomRecipeInstructions(state, action) {
       state.isLoading = false;
       state.recipeInstructions = action.payload;
-    }
+    },
   },
 });
 

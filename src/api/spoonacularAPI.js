@@ -1,5 +1,6 @@
 export const baseURL = 'https://api.spoonacular.com/';
 const randomRecipe = 'recipes/random';
+const extractRecipe = 'recipes/extract';
 const apiKey = '?apiKey=929576e78e4e4be28294ddade6c6f1ca';
 
 export const getRandomRecipe = async () => {
@@ -14,3 +15,12 @@ export const getRandomRecipe = async () => {
 
   return recipe;
 }
+
+export const getRecipeFromWeb = async (url) => {
+  const response = await fetch(`${baseURL}${extractRecipe}${apiKey}&url=${url}`),
+    json = await response.json();
+
+  console.log(json)
+}
+
+getRecipeFromWeb();
