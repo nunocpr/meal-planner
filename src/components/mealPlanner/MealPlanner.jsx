@@ -1,15 +1,13 @@
 import React, {
-  useEffect,
-  useRef
+  useEffect
 } from "react";
 import { useDispatch } from 'react-redux';
-import { getRecipeFromWeb } from '../../api/spoonacularAPI';
 import { fetchRandomRecipe } from "../../store/recipeSlice";
 import Recipe from '../recipe/recipe';
+import RecipeByURL from "../recipe/recipeByURL";
 
 const MealPlanner = () => {
-  const dispatch = useDispatch(),
-    urlTextInput = useRef(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchRandomRecipe())
@@ -20,14 +18,9 @@ const MealPlanner = () => {
     dispatch(fetchRandomRecipe());
   }
 
-  const submitE = (e) => {
-    e.preventDefault();
-    getRecipeFromWeb(urlTextInput.current.value)
-  }
-
   return (
     <div className="main-container">
-      <div className="random-recipe-button-container">
+      <div className="random-recipe-button-c-ontainer">
         <button className="random-recipe-button" onClick={getRandomRecipeHandler}>
           Click me for a random Recipe
         </button>
@@ -35,18 +28,9 @@ const MealPlanner = () => {
 
       <Recipe />
 
-      <form className="url-selector" onSubmit={submitE}>
-        <h3>Please enter a link to a recipe</h3>
-        <input
-          type="text"
-          placeholder="URL"
-          ref={urlTextInput}
-          required
-        />
-        <button type="submit">Search Recipe</button>
-      </form>
-    </div >
+      <RecipeByURL />
 
+    </div >
   )
 }
 

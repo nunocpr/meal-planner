@@ -2,7 +2,6 @@ import React, {
   useState
 } from "react";
 import {
-  useDispatch,
   useSelector
 } from 'react-redux';
 import {
@@ -12,8 +11,7 @@ import {
 
 
 const Recipe = () => {
-  const dispatch = useDispatch(),
-    recipe = useSelector(selectRecipe),
+  const recipe = useSelector(selectRecipe),
     recipeInstructions = useSelector(selectRecipeInstructions),
     ingredients = recipe.extendedIngredients,
     [content, setContent] = useState('instructions');
@@ -22,7 +20,6 @@ const Recipe = () => {
   const toggleRenderContent = (e) => {
     setContent(e.target.className);
   }
-
 
   /* Render Recipe Content */
   const renderContent = () => {

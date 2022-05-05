@@ -26,10 +26,14 @@ const recipeSlice = createSlice({
       state.isLoading = false;
       state.error = true;
     },
-    getRandomRecipeInstructions(state, action) {
+    getRecipeInstructions(state) {
       state.isLoading = false;
-      state.recipeInstructions = action.payload;
+      state.recipeInstructions = state.currentRecipe.analyzedInstructions[0].steps;
     },
+    changeCurrentRecipe(state, action) {
+      state.isLoading = false;
+      state.currentRecipe = action.payload;
+    }
   },
 });
 
@@ -37,7 +41,8 @@ export const {
   getRandomRecipePending,
   getRandomRecipeSuccess,
   getRandomRecipeFailed,
-  getRandomRecipeInstructions,
+  getRecipeInstructions,
+  changeCurrentRecipe,
 } = recipeSlice.actions
 
 export default recipeSlice.reducer;
@@ -54,7 +59,7 @@ export const fetchRandomRecipe = () => async dispatch => {
     const recipe = await getRandomRecipe();
 
     dispatch(getRandomRecipeSuccess(recipe));
-    dispatch(getRandomRecipeInstructions(recipe.analyzedInstructions[0].steps));
+    dispatch(getRecipeInstructions());
   } catch (error) {
     console.log(error + ' This is an API error')
     dispatch(getRandomRecipeFailed());

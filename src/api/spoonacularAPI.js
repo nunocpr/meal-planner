@@ -17,10 +17,12 @@ export const getRandomRecipe = async () => {
 }
 
 export const getRecipeFromWeb = async (url) => {
-  const response = await fetch(`${baseURL}${extractRecipe}${apiKey}&url=${url}`),
-    json = await response.json();
+  const response = await fetch(`${baseURL}${extractRecipe}${apiKey}&url=${url}`);
+  try {
+    const json = await response.json()
+    return json;
+  } catch (error) {
+    return error
+  }
 
-  console.log(json)
 }
-
-getRecipeFromWeb();
