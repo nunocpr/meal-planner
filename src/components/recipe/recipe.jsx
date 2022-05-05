@@ -8,21 +8,28 @@ import {
   selectRecipe,
   selectRecipeInstructions,
 } from "../../store/recipeSlice";
+import { BsHeart, BsHeartFill } from 'react-icons/bs'
 
 
 const Recipe = () => {
   const recipe = useSelector(selectRecipe),
     recipeInstructions = useSelector(selectRecipeInstructions),
     ingredients = recipe.extendedIngredients,
-    [content, setContent] = useState('instructions');
+    [content, setContent] = useState('instructions'),
+    [save, setSave] = useState(false);
 
   /* Button Click Handlers */
   const toggleRenderContent = (e) => {
     setContent(e.target.className);
   }
 
+  const toggleSaveRecipe = () => {
+    setSave(!save);
+    console.log(save);
+  }
+
   /* Render Recipe Content */
-  const renderContent = () => {
+  const renderRecipeContent = () => {
 
     /* Recipe Instruction list */
     if (content === 'instructions') {
@@ -77,7 +84,26 @@ const Recipe = () => {
         </div >
       )
     } else {
-      return
+      return 'Please select another Recipe';
+    }
+  }
+
+
+  const renderSaveRecipe = () => {
+    if (!save) {
+      return (
+        <button onClick={toggleSaveRecipe}>
+          Save this Recipe
+          <BsHeart />
+        </button>
+      )
+    } else {
+      return (
+        <button onClick={toggleSaveRecipe}>
+          Remove this Recipe
+          <BsHeartFill />
+        </button>
+      )
     }
   }
 
@@ -86,6 +112,10 @@ const Recipe = () => {
       <h3 className="title">
         {recipe.title}
       </h3>
+      <div className="save">
+        {renderSaveRecipe()}
+      </div>
+      <br />
 
       <img
         src={recipe.image}
@@ -118,7 +148,7 @@ const Recipe = () => {
         </div>
 
         <div className="recipe-info-content">
-          {renderContent()}
+          {renderRecipeContent()}
         </div>
 
       </div>

@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getRandomRecipe } from '../api/spoonacularAPI.js';
+import { rando } from '../utils/util_randomNumber.js';
 
 const initialState = {
   currentRecipe: [],
+  currentRecipeInternalID: '',
   recipeInstructions: [],
   recipeList: [],
   error: false,
@@ -21,18 +23,37 @@ const recipeSlice = createSlice({
     getRandomRecipeSuccess(state, action) {
       state.isLoading = false;
       state.currentRecipe = action.payload;
+      state.currentRecipeInternalID = 'iid_' + rando(1, 100000);
     },
     getRandomRecipeFailed(state) {
       state.isLoading = false;
       state.error = true;
     },
+    // Get the current recipe instructions
     getRecipeInstructions(state) {
       state.isLoading = false;
       state.recipeInstructions = state.currentRecipe.analyzedInstructions[0].steps;
     },
+    // Change the current recipe to another one
     changeCurrentRecipe(state, action) {
       state.isLoading = false;
       state.currentRecipe = action.payload;
+    },
+    // Add the currentRecipe to the recipeList
+    addRecipeToList(state, action) {
+
+    },
+    // Remove the currentRecipe from the recipeList
+    removeRecipeFromList(state, action) {
+
+    },
+    // Create a Recipe and add it to the list
+    createRecipe(state, action) {
+
+    },
+    // Delete a Recipe and remove it from the list
+    deleteRecipe(state, action) {
+
     }
   },
 });
@@ -43,6 +64,10 @@ export const {
   getRandomRecipeFailed,
   getRecipeInstructions,
   changeCurrentRecipe,
+  addRecipeToList,
+  removeRecipeFromList,
+  createRecipe,
+  deleteRecipe
 } = recipeSlice.actions
 
 export default recipeSlice.reducer;
@@ -50,6 +75,8 @@ export default recipeSlice.reducer;
 /* Selectors */
 export const selectRecipe = (state) => state.recipe.currentRecipe;
 export const selectRecipeInstructions = (state) => state.recipe.recipeInstructions;
+export const selectCurrentRecipeInternalID = (state) => state.recipe.currentRecipeInternalID;
+export const selectRecipeList = (state) => state.recipe.recipeList;
 
 /* Async Thunks to fetch recipes */
 
