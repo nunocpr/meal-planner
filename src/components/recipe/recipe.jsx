@@ -10,13 +10,24 @@ import {
 } from "../../store/recipeSlice";
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 
+/* 
+----------------------------
+ 
+TO DOs:
+ 
+1. Css, styling and animation
+
+----------------------------
+*/
+
 
 const Recipe = () => {
   const recipe = useSelector(selectRecipe),
     recipeInstructions = useSelector(selectRecipeInstructions),
     ingredients = recipe.extendedIngredients,
     [content, setContent] = useState('instructions'),
-    [save, setSave] = useState(false);
+    [saved, setSaved] = useState(false);
+
 
   /* Button Click Handlers */
   const toggleRenderContent = (e) => {
@@ -24,13 +35,17 @@ const Recipe = () => {
   }
 
   const toggleSaveRecipe = () => {
-    setSave(!save);
-    console.log(save);
+    if (Object.keys(localStorage).includes(JSON.stringify(recipe.id))) {
+      localStorage.removeItem(JSON.stringify(recipe.id))
+      setSaved(false);
+    } else {
+      localStorage.setItem(recipe.id, JSON.stringify(recipe));
+      setSaved(true);
+    }
   }
 
   /* Render Recipe Content */
   const renderRecipeContent = () => {
-
     /* Recipe Instruction list */
     if (content === 'instructions') {
       return (
@@ -49,7 +64,6 @@ const Recipe = () => {
       )
     }
     /* Recipe Ingredients list */
-
     if (content === 'ingredients') {
       return (
         <div className={content}>
@@ -65,7 +79,6 @@ const Recipe = () => {
                   Amounts
                 </h4>
               </div>
-
               {ingredients.map(ingredient =>
                 <li
                   className="ingredients-unit"
@@ -88,9 +101,8 @@ const Recipe = () => {
     }
   }
 
-
   const renderSaveRecipe = () => {
-    if (!save) {
+    if (!saved) {
       return (
         <button onClick={toggleSaveRecipe}>
           Save this Recipe

@@ -2,6 +2,7 @@ import React from 'react';
 import MealPlanner from './components/mealPlanner/MealPlanner';
 import Header from './components/header/Header';
 import './css/app.css';
+import RecipeList from './components/recipeList/recipeList';
 
 
 const App = () =>
@@ -11,14 +12,7 @@ const App = () =>
 
     <MealPlanner />
 
-    <div>
-      Add a recipe
-    </div>
-
-    <div>
-      Check your recipes
-    </div>
-
+    <RecipeList />
   </div>
 
 export default App;

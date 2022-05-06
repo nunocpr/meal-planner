@@ -75,7 +75,7 @@ export default recipeSlice.reducer;
 /* Selectors */
 export const selectRecipe = (state) => state.recipe.currentRecipe;
 export const selectRecipeInstructions = (state) => state.recipe.recipeInstructions;
-export const selectCurrentRecipeInternalID = (state) => state.recipe.currentRecipeInternalID;
+export const selectRecipeInternalID = (state) => state.recipe.currentRecipeInternalID;
 export const selectRecipeList = (state) => state.recipe.recipeList;
 
 /* Async Thunks to fetch recipes */
