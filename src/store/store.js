@@ -9,6 +9,6 @@ import recipeSliceReducer from './recipeSlice';
 export default configureStore({
   reducer: combineReducers({
     calendar: calendarSliceReducer,
-    recipe: recipeSliceReducer
+    recipe: recipeSliceReducer,
   }),
 });

@@ -39,21 +39,16 @@ const recipeSlice = createSlice({
       state.isLoading = false;
       state.currentRecipe = action.payload;
     },
-    // Add the currentRecipe to the recipeList
     addRecipeToList(state, action) {
-
+      state.recipeList = [...state.recipeList, action.payload];
+      console.log('recipe is now saved')
+      console.log(state.recipeList)
     },
     // Remove the currentRecipe from the recipeList
     removeRecipeFromList(state, action) {
-
-    },
-    // Create a Recipe and add it to the list
-    createRecipe(state, action) {
-
-    },
-    // Delete a Recipe and remove it from the list
-    deleteRecipe(state, action) {
-
+      state.recipeList = state.recipeList.filter(recipe => recipe.id !== action.payload.id);
+      console.log('recipe is now removed')
+      console.log(state.recipeList)
     }
   },
 });
@@ -65,9 +60,7 @@ export const {
   getRecipeInstructions,
   changeCurrentRecipe,
   addRecipeToList,
-  removeRecipeFromList,
-  createRecipe,
-  deleteRecipe
+  removeRecipeFromList
 } = recipeSlice.actions
 
 export default recipeSlice.reducer;

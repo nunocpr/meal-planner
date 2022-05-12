@@ -1,3 +1,4 @@
+import { rando } from "../utils/util_randomNumber";
 export const baseURL = 'https://api.spoonacular.com/';
 const randomRecipe = 'recipes/random';
 const extractRecipe = 'recipes/extract';
@@ -19,8 +20,9 @@ export const getRandomRecipe = async () => {
 export const getRecipeFromWeb = async (url) => {
   const response = await fetch(`${baseURL}${extractRecipe}${apiKey}&url=${url}`);
   try {
-    const json = await response.json()
-    return json;
+    const json = await response.json();
+    json.id = 'id_' + rando();
+    return json
   } catch (error) {
     return error
   }

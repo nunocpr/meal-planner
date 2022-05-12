@@ -1,12 +1,17 @@
 import React, {
+  useEffect,
   useState
 } from "react";
 import {
+  useDispatch,
   useSelector
 } from 'react-redux';
 import {
   selectRecipe,
   selectRecipeInstructions,
+  selectRecipeList,
+  addRecipeToList,
+  removeRecipeFromList
 } from "../../store/recipeSlice";
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 
@@ -20,31 +25,50 @@ TO DOs:
 ----------------------------
 */
 
-
 const Recipe = () => {
   const recipe = useSelector(selectRecipe),
     recipeInstructions = useSelector(selectRecipeInstructions),
+    recipeList = useSelector(selectRecipeList),
     ingredients = recipe.extendedIngredients,
     [content, setContent] = useState('instructions'),
-    [saved, setSaved] = useState(false);
-
+    [isRecipeSaved, setIsRecipeSaved] = useState(false),
+    dispatch = useDispatch();
 
   /* Button Click Handlers */
   const toggleRenderContent = (e) => {
     setContent(e.target.className);
   }
 
-  const toggleSaveRecipe = () => {
-    if (Object.keys(localStorage).includes(JSON.stringify(recipe.id))) {
-      localStorage.removeItem(JSON.stringify(recipe.id))
-      setSaved(false);
-    } else {
-      localStorage.setItem(recipe.id, JSON.stringify(recipe));
-      setSaved(true);
-    }
+
+  const saveRecipe = () => {
+    setIsRecipeSaved(true);
+    dispatch(addRecipeToList(recipe))
+  }
+
+  const removeRecipe = () => {
+    setIsRecipeSaved(false);
+    dispatch(removeRecipeFromList(recipe))
   }
 
   /* Render Recipe Content */
+  const renderSaveRecipe = () => {
+    if (!recipeList.includes(recipe)) {
+      return (
+        <button onClick={saveRecipe}>
+          Save this Recipe
+          <BsHeart />
+        </button>
+      )
+    } else {
+      return (
+        <button onClick={removeRecipe}>
+          Remove this Recipe
+          <BsHeartFill />
+        </button>
+      )
+    }
+  }
+
   const renderRecipeContent = () => {
     /* Recipe Instruction list */
     if (content === 'instructions') {
@@ -101,23 +125,9 @@ const Recipe = () => {
     }
   }
 
-  const renderSaveRecipe = () => {
-    if (!saved) {
-      return (
-        <button onClick={toggleSaveRecipe}>
-          Save this Recipe
-          <BsHeart />
-        </button>
-      )
-    } else {
-      return (
-        <button onClick={toggleSaveRecipe}>
-          Remove this Recipe
-          <BsHeartFill />
-        </button>
-      )
-    }
-  }
+  useEffect(() => {
+    renderSaveRecipe()
+  }, [isRecipeSaved])
 
   return (
     <div className="recipe">
