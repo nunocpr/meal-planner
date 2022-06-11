@@ -14,14 +14,15 @@ including:
 @import './animation.css';
 @import './calendar.css';
 @import './meal-planner.css';
+@import './header.css';
 
 :root {
   --primary-bg-dark: #737B56;
   --primary-bg-medium: #737b56b7;
   --primary-bg-light: #a5ad85;
   --secondary-bg-dark: #F7DCB5;
-  --secondary-bg-medium: #fff2e0;
-  --secondary-bg-light: #fcebd5;
+  --secondary-bg-medium: #fcebd5;
+  --secondary-bg-light: #FFFAF3;
   --text-color-dark: #462f22;
   --text-color-medium: #462f2236;
   --text-color-light: #f0f0ec;
