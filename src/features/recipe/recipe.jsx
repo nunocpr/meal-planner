@@ -39,7 +39,6 @@ const Recipe = () => {
     setContent(e.target.className);
   }
 
-
   const saveRecipe = () => {
     setIsRecipeSaved(true);
     dispatch(addRecipeToList(recipe))

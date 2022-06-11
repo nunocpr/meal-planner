@@ -1,7 +1,104 @@
 header {
   display: flex;
-  flex-direction: row;
+  position: fixed;
+  width: 100%;
   justify-content: space-around;
   align-items: center;
   min-height: 70px;
+  background-color: var(--secondary-bg-light);
+  border-bottom: 3px solid var(--primary-bg-dark);
+}
+
+.logo {
+  font-size: 2em;
+  color: var(--primary-bg-dark);
+}
+
+.menu {
+  display: none;
+}
+
+.expand-btn {
+  padding: 15px;
+  font-size: 1.3em;
+  color: var(--primary-bg-dark);
+}
+
+.menu-wrapper {
+  position: fixed;
+  margin-top: 73px;
+  background-color: var(--secondary-bg-light);
+  min-width: 60%;
+  right: 0;
+}
+
+.expanded-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+}
+
+.menu-wrapper {
+  border-radius: 0 0 5px 5px;
+  border-left: 3px solid var(--primary-bg-dark);
+  border-bottom: 3px solid var(--primary-bg-dark);
+  border-right: 3px solid var(--primary-bg-dark);
+}
+
+.menu-wrapper a {
+  color: var(--primary-bg-dark);
+  text-decoration: none;
+  overflow: hidden;
+  padding: 10px 10%;
+}
+
+.menu-wrapper a:not(:last-child) {
+  border-bottom: 1px solid var(--primary-bg-dark)
+}
+
+.menu-wrapper a:hover,
+.menu a:hover {
+  color: var(--primary-bg-light);
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* Medium Sized screens (from 450px to 900px) */
+@media only screen and (min-width: 450px) {
+  .menu-wrapper {
+    min-width: 50%;
+  }
+
+  .menu-wrapper a {
+    padding: 10px 20%;
+  }
+}
+
+
+/* Large Sized screens (from 900px upwards) */
+@media only screen and (min-width: 900px) {
+
+  .expand-btn,
+  .menu-wrapper {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+  }
+
+  .menu a {
+    color: var(--primary-bg-dark);
+    text-decoration: none;
+    overflow: hidden;
+    padding: 7px;
+  }
+
+  .menu a:hover {
+    text-decoration: underline;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-around;
+  }
 }
