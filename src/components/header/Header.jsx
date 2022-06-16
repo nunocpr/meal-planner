@@ -10,6 +10,7 @@ const Header = () => {
 
   const renderMenu = () => {
     if (isOpen) {
+
       return (
         <div className="menu-wrapper">
           <nav className="expanded-menu">

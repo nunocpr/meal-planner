@@ -1,0 +1,149 @@
+/* Small Sized screens (until 450px) */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  letter-spacing: 1px;
+}
+
+.call-to-action {
+  padding: 20px 0;
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.call-to-action>a {
+  margin: 20px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  border-radius: 30px;
+  border: 5px var(--secondary-bg-medium) solid;
+  box-shadow: 0 7px 12px 0 rgba(0, 0, 0, 0.2);
+  transition: 300ms ease;
+}
+
+.card:hover {
+  box-shadow: 4px 7px 12px 0 rgba(0, 0, 0, 0.4);
+  background-position: top;
+}
+
+.meal,
+.create-recipe,
+.add-recipe {
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.meal {
+  background-image: url(https://images.pexels.com/photos/1274640/pexels-photo-1274640.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
+.create-recipe {
+  background-image: url(https://images.pexels.com/photos/7262909/pexels-photo-7262909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
+.add-recipe {
+  background-image: url(https://images.pexels.com/photos/1109197/pexels-photo-1109197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
+span {
+  display: flex;
+  background-color: rgba(365, 365, 365, 0.9);
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3rem;
+  padding: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--primary-bg-dark);
+}
+
+
+/*
+.recipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.random-recipe-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.random-recipe-button {
+  border: 1px solid black;
+  padding: 4px;
+}
+
+.recipe .title {
+  text-align: center;
+}
+ */
+/* recipeInfo */
+/* .recipe-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.recipe-info-selectors {
+  background-color: var(--secondary-bg-dark);
+  display: flex;
+}
+
+.recipe-info-selectors button {
+  width: 100%;
+}
+
+.recipe-info-content {
+  align-self: center;
+  padding: var(--size-3);
+}
+ */
+/* Recipe Instructions */
+/* 
+.instructions-step {
+  margin-bottom: var(--size-3);
+  padding: var(--size-2)
+} */
+
+/* Recipe Ingredients */
+/* .ingredient-headings {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+ */
+/* .ingredients-unit {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: var(--size-2);
+}
+ */
+/* .ingredients-unit>* {
+  padding: 5px;
+}
+ */
+/* Medium Sized screens (from 450px to 900px) */
+/* @media only screen and (min-width: 450px) {}
+ */
+
+/* Large Sized screens (from 450px to 900px) */
+/* @media only screen and (min-width: 900px) {
+  .recipe {
+    width: 60vw;
+    align-self: center;
+  }
+}  */
