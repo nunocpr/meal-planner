@@ -1,15 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Recipe from '../../features/recipe/recipe';
-import RecipeByURL from "../../features/recipe/recipeByURL";
 import RecipeRandom from "../../features/recipe/recipeRandom";
 
 const Home = () => {
   return (
     <div className="main-container">
-      {/* <RecipeRandom /> */}
-      {/* <Recipe /> */}
-      {/* <RecipeByURL /> */}
       <h1 className="title">Plan Sooper Delicious Meals</h1>
       <section className="call-to-action">
 
@@ -26,8 +22,8 @@ const Home = () => {
         </Link>
 
       </section>
-
-
+      <RecipeRandom />
+      <Recipe />
     </div >
   )
 }

@@ -1,7 +1,8 @@
 header {
   display: flex;
-  position: fixed;
-  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   justify-content: space-around;
   align-items: center;
   min-height: 70px;
@@ -20,18 +21,16 @@ header {
 }
 
 .expand-btn {
-  padding: 15px;
   font-size: 1.3em;
   color: var(--primary-bg-dark);
 }
 
 .menu-wrapper {
   position: fixed;
-  margin-top: 73px;
-  background-color: var(--secondary-bg-light);
   min-width: 55%;
   right: 20px;
-  border-radius: 0 0 5px 5px;
+  background-color: var(--secondary-bg-light);
+  border-radius: 0 0 7px px;
   border-left: 3px solid var(--primary-bg-dark);
   border-bottom: 3px solid var(--primary-bg-dark);
   border-right: 3px solid var(--primary-bg-dark);
@@ -49,6 +48,9 @@ nav a {
   text-decoration: none;
   overflow: hidden;
   padding: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
   box-shadow: inset 0 500px 0 0 var(--secondary-bg-light);
   -webkit-transition: all ease 200ms;
   -moz-transition: all ease 200ms;
@@ -73,6 +75,10 @@ nav a:hover {
   text-decoration: underline;
 }
 
+h1 {
+  color: var(--primary-bg-dark);
+  margin-top: 0;
+}
 
 /* Medium Sized screens (from 450px to 900px) */
 @media only screen and (min-width: 450px) {}

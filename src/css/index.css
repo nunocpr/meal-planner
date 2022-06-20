@@ -68,3 +68,7 @@ button {
   -moz-osx-font-smoothing: inherit;
   -webkit-appearance: none;
 }
+
+a {
+  text-decoration: none;
+}
