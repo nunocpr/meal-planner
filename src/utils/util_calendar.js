@@ -1,12 +1,14 @@
 import {
   startOfYear,
   startOfMonth,
+  startOfDecade,
   endOfMonth,
   startOfWeek,
   endOfWeek,
   startOfDay,
   addDays,
-  addMonths
+  addMonths,
+  addYears,
 } from 'date-fns';
 
 /* A function that returns a week */
@@ -61,4 +63,16 @@ export const newYear = (start = new Date()) => {
 
     return month;
   }
-} 
+}
+/* A function that returns another function that returns a decade */
+
+export const newDecade = (start = new Date()) => {
+  let date = startOfDecade(startOfYear(start));
+
+  return function () {
+    const year = [...Array(5)].map((_, i) => addYears(date, i));
+
+    return year;
+  }
+}
+

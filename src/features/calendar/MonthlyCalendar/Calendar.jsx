@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Caption } from './Caption';
-import { TableHead } from "./TableHead";
-import { TableBody } from "./TableBody";
 import { SelectMonth } from "./SelectMonth";
+import Table from "./Table.jsx";
+import WeeklyCalendar from "./WeeklyCalendar";
 
 export const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date()),
@@ -11,7 +11,7 @@ export const Calendar = () => {
     handleToggle = () => setShowMonths(!showMonths);
 
   return (
-    <div className="calendar-container">
+    <div className="monthly-calendar-container">
 
       <div className="calendar-background">
 
@@ -26,24 +26,19 @@ export const Calendar = () => {
           showMonths={showMonths}
         />
 
-        <table>
+        <Table
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          currentDay={currentDay}
+        />
 
-          <TableHead
-            selectedDate={selectedDate}
-          />
-
-          <TableBody
-            selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
-            currentDay={currentDay}
-          />
-
-        </table>
-
+        <WeeklyCalendar
+          selectedDate={selectedDate}
+        />
       </div>
     </div>
   )
 
 }
 
-export default Calendar
+export default Calendar;

@@ -75,11 +75,6 @@ nav a:hover {
   text-decoration: underline;
 }
 
-h1 {
-  color: var(--primary-bg-dark);
-  margin-top: 0;
-}
-
 /* Medium Sized screens (from 450px to 900px) */
 @media only screen and (min-width: 450px) {}
 

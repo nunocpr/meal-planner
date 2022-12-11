@@ -2,9 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getRandomRecipe } from '../api/spoonacularAPI.js';
 import { rando } from '../utils/util_randomNumber.js';
 
+
+//? stuff to save in recipeList: { title, id, image, readyInMinutes, servings, vegan, vegetarian, extendedIngredients }
 const initialState = {
   currentRecipe: [],
-  currentRecipeInternalID: '',
   recipeInstructions: [],
   recipeList: [],
   error: false,
@@ -15,7 +16,7 @@ const recipeSlice = createSlice({
   name: 'recipe',
   initialState,
   reducers: {
-    // Reducers for Random Recipe
+    //* Reducers for Random Recipe
     getRandomRecipePending(state) {
       state.isLoading = true;
       state.error = false;
@@ -23,28 +24,40 @@ const recipeSlice = createSlice({
     getRandomRecipeSuccess(state, action) {
       state.isLoading = false;
       state.currentRecipe = action.payload;
-      state.currentRecipeInternalID = 'iid_' + rando(1, 100000);
+      console.log(state.currentRecipe);
     },
     getRandomRecipeFailed(state) {
       state.isLoading = false;
       state.error = true;
     },
-    // Get the current recipe instructions
+    //* Get the current recipe instructions
     getRecipeInstructions(state) {
       state.isLoading = false;
       state.recipeInstructions = state.currentRecipe.analyzedInstructions[0].steps;
     },
-    // Change the current recipe to another one
-    changeCurrentRecipe(state, action) {
-      state.isLoading = false;
-      state.currentRecipe = action.payload;
-    },
+    //* Add the currentRecipe to the recipeList
     addRecipeToList(state, action) {
-      state.recipeList = [...state.recipeList, action.payload];
-      console.log('recipe is now saved')
-      console.log(state.recipeList)
+      if (!action.payload.id) {
+        return
+      }
+      const rId = state.recipeList.map(r => r.id);
+      if (!rId.includes(action.payload.id)) {
+        state.recipeList = [...state.recipeList, {
+          title: action.payload.title,
+          id: action.payload.id,
+          image: action.payload.image,
+          readyInMinutes: action.payload.readyInMinutes,
+          servings: action.payload.servings,
+          vegan: action.payload.vegan,
+          vegetarian: action.payload.vegetarian,
+          extendedIngredients: action.payload.extendedIngredients
+        }];
+        console.log('recipe is now saved')
+        console.log(state.recipeList)
+      }
+      return
     },
-    // Remove the currentRecipe from the recipeList
+    //* Remove the currentRecipe from the recipeList
     removeRecipeFromList(state, action) {
       state.recipeList = state.recipeList.filter(recipe => recipe.id !== action.payload.id);
       console.log('recipe is now removed')
@@ -58,20 +71,18 @@ export const {
   getRandomRecipeSuccess,
   getRandomRecipeFailed,
   getRecipeInstructions,
-  changeCurrentRecipe,
   addRecipeToList,
   removeRecipeFromList
 } = recipeSlice.actions
 
 export default recipeSlice.reducer;
 
-/* Selectors */
+//* Selectors
 export const selectRecipe = (state) => state.recipe.currentRecipe;
 export const selectRecipeInstructions = (state) => state.recipe.recipeInstructions;
-export const selectRecipeInternalID = (state) => state.recipe.currentRecipeInternalID;
 export const selectRecipeList = (state) => state.recipe.recipeList;
 
-/* Async Thunks to fetch recipes */
+//* Async Thunks to fetch recipes 
 
 export const fetchRandomRecipe = () => async dispatch => {
   try {

@@ -8,14 +8,14 @@ export function Caption(props) {
   return (
     <div className="caption-container">
 
+
+      <div className="caption">
+        {format(props.selectedDate, 'MMMM')} {format(props.selectedDate, 'Y')}
+      </div>
       <button
         type="button"
         onClick={props.handleToggle}
       >
-        <div className="caption">
-          {format(props.selectedDate, 'MMMM')} {format(props.selectedDate, 'Y')}
-        </div>
-
         <TiArrowSortedDown />
       </button>
 

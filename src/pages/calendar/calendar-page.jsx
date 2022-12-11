@@ -1,5 +1,6 @@
 import React from "react";
-import Calendar from '../../features/calendar/Calendar'
+import Calendar from '../../features/calendar/MonthlyCalendar/Calendar';
+import WeeklyCalendar from '../../features/calendar/MonthlyCalendar/WeeklyCalendar';
 
 export const CalendarPage = () => {
 

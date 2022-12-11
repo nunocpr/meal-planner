@@ -1,0 +1,175 @@
+/********* 
+**
+** GLOBAL ELEMENTS
+**
+*********/
+
+form {
+  background-color: var(--secondary-bg-light);
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  padding: 30px;
+  border: 1px solid var(--primary-bg-dark);
+  border-radius: 5px;
+}
+
+input {
+  margin-right: 10px;
+  padding: 4px;
+  border: 1px solid var(--primary-bg-dark);
+  border-radius: 4px;
+}
+
+/*****************
+**
+** SUBMIT BUTTON
+**
+*****************/
+
+
+.btn-submit {
+  padding: 10px;
+  font-weight: bold;
+  background-color: white;
+  border: 2px solid var(--primary-bg-dark);
+  color: var(--primary-bg-dark);
+  border-radius: 15px;
+}
+
+.btn-submit:hover {
+  background-color: var(--primary-bg-dark);
+  color: var(--secondary-bg-light);
+}
+
+
+/*****************
+**
+** INPUT FIELD
+**
+*****************/
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-group input {
+  width: 73%;
+}
+
+.input-group-ingredients {
+  display: grid;
+  grid-template-columns: 1fr, 1fr, 1fr;
+}
+
+.btn-add {
+  margin-top: 7px;
+}
+
+label[for="vegetarian"],
+label[for="vegan"] {
+  margin-right: 15px;
+}
+
+/********* 
+**
+** CUSTOM CHECKBOX INPUT 
+**
+*********/
+.input-group-checkbox {
+  display: flex;
+  padding: 5px 0;
+}
+
+input[type=checkbox] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+input[type="checkbox"]:checked {
+  background-color: white;
+}
+
+input[type=checkbox]:after {
+  content: "";
+  position: relative;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-width: 0 0px 0px 0;
+  top: 0px;
+}
+
+input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  top: 1px;
+  left: 5px;
+  border: solid var(--primary-bg-dark);
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/********* 
+**
+** INGREDIENTS & INSTRUCTIONS ITEMS 
+**
+*********/
+
+.ingredient-list,
+.instruction-list {
+  background-color: white;
+  border: 1px solid var(--primary-bg-medium);
+  color: var(--primary-bg-dark);
+  padding: 4px 15px;
+  border-radius: 4px;
+
+}
+
+.ingredient-item,
+.instruction-item {
+  margin-top: 5px;
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-btn-group {
+  display: flex;
+  align-items: center;
+}
+
+.item-btn-group button {
+  height: 20px;
+}
+
+.btn-edit {
+  margin-right: 10px;
+}
+
+
+/********* 
+**
+** //////////////////////////////////////
+**
+*********/
+
+/********* 
+**
+** MEDIA QUERIES
+**
+*********/
+
+@media only screen and (max-width:) {}

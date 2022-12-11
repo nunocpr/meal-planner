@@ -1,0 +1,24 @@
+.weekly-calendar-container ul {
+  padding: 0;
+}
+
+.weekly-calendar-container li {
+  display: flex;
+  width: 400px;
+  align-items: center;
+}
+
+.weekly-calendar-container .day-of-the-week {
+  width: 30%;
+}
+
+.weekly-calendar-container .meals {
+  display: flex;
+  width: 70%;
+  justify-content: space-evenly;
+}
+
+.weekly-calendar-container .meals>* {
+  width: 50%;
+  text-align: center;
+}

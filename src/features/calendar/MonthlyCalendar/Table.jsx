@@ -1,10 +1,25 @@
 import React from "react";
 import { format, isSameDay, isSameMonth } from 'date-fns';
-import { newMonth } from "../../utils/util_calendar";
+import { newWeek, newMonth } from "../../../utils/util_calendar";
 
-export function TableBody(props) {
+function Table(props) {
 
-  /* Chainging the color of the day, depending if it is: */
+  //! START OF THEAD
+  const week = newWeek(props.selectedDate)();
+  const weekDays = week.map(day =>
+    format(day, 'EEE'))
+    .map(dayName =>
+      <th
+        className="week-day-name"
+        key={dayName}
+      >
+        {dayName}
+      </th>
+    );
+
+  //! END OF THEAD
+  //! START OF TBOOY
+  /* Changing the color of the day, depending if it is: */
 
   /* a day from a different Month */
   const selectedDayColor = (day) => {
@@ -48,9 +63,21 @@ export function TableBody(props) {
     </tr>
   );
 
+  //! END OF TBOOY
+
+
   return (
-    <tbody>
-      {daysOfTheMonth}
-    </tbody>
+    <table>
+      <thead>
+        <tr className='day-name-row'>
+          {weekDays}
+        </tr>
+      </thead>
+      <tbody>
+        {daysOfTheMonth}
+      </tbody>
+    </table>
   )
 }
+
+export default Table;

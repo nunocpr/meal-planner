@@ -12,9 +12,12 @@ including:
 /* importing other css files into the main css */
 @import './normalize.css';
 @import './animation.css';
-@import './calendar.css';
+@import './monthlyCalendar.css';
+@import './weeklyCalendar.css';
 @import './home.css';
 @import './header.css';
+@import './calendar-page.css';
+@import './recipe-page.css';
 
 :root {
   --primary-bg-dark: #737B56;
@@ -50,6 +53,13 @@ body {
 
 /* Common Elements and Classes */
 
+h1,
+h3,
+h4 {
+  color: var(--primary-bg-dark);
+  margin-top: 0;
+}
+
 .hidden {
   display: none;
 }
@@ -71,4 +81,13 @@ button {
 
 a {
   text-decoration: none;
+}
+
+.line {
+  border: 0;
+  text-align: center;
+  padding: 0;
+  margin: 25px 0 0 0;
+  width: 100%;
+  outline: 1px solid var(--primary-bg-medium);
 }

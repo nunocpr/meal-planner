@@ -26,6 +26,7 @@ TO DOs:
 */
 
 const Recipe = () => {
+  // selectors
   const recipe = useSelector(selectRecipe),
     recipeInstructions = useSelector(selectRecipeInstructions),
     recipeList = useSelector(selectRecipeList),
@@ -51,18 +52,24 @@ const Recipe = () => {
 
   /* Render Recipe Content */
   const renderSaveRecipe = () => {
-    if (!recipeList.includes(recipe)) {
+    if (!recipe.id) {
+      return 'Choose a recipe'
+    }
+    const rId = recipeList.map((r) => r.id);
+    if (recipeList.length > 0) {
+      if (rId.includes(recipe.id)) {
+        return (
+          <button onClick={removeRecipe}>
+            Remove this Recipe
+            <BsHeartFill />
+          </button>
+        )
+      }
+    } else {
       return (
         <button onClick={saveRecipe}>
           Save this Recipe
           <BsHeart />
-        </button>
-      )
-    } else {
-      return (
-        <button onClick={removeRecipe}>
-          Remove this Recipe
-          <BsHeartFill />
         </button>
       )
     }

@@ -31,11 +31,7 @@ const calendarSlice = createSlice({
 export const {
   getPostsPending,
   getPostsSuccess,
-  getPostsFailed,
-  toggleShowingComments,
-  getCommentsPending,
-  getCommentsSuccess,
-  getCommentsFailed,
+  getPostsFailed
 } = calendarSlice.actions
 
 export default calendarSlice.reducer;
